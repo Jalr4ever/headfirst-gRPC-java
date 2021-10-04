@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_package = "com.wayland._grpc.simple_rpc";
+
+service UserService{
+  rpc login(LoginRequest)  returns (CommonResponse);
+  rpc logout(EmptyRequest)  returns (CommonResponse);
+}
+
+message LoginRequest{
+  string username = 1 ;
+  string password = 2 ;
+}
+
+message CommonResponse{
+  string message = 1;
+  int32  code = 2;
+  string data = 3;
+}
+
+message EmptyRequest{
+
+}
