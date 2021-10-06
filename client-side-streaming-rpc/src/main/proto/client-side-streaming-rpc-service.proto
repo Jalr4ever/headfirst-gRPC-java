@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_package = "com.wayland._grpc.client_side_streaming_rpc";
+
+service StorageService{
+  rpc upload(stream UploadRequest) returns (CommonResponse) {};
+
+}
+
+message UploadRequest{
+
+  oneof data{
+    bytes chunk = 1;
+    Request request = 2;
+  };
+
+  message Request{
+    int64 content_length = 3;
+    ContentType content_type = 4;
+    string content_encoding = 5;
+    string name = 6;
+  }
+
+  enum ContentType {
+    OCTET_STREAMING = 0;
+    ZIP = 1;
+    IMG_PNG = 2;
+    IMG_JPEG = 3;
+  }
+
+}
+
+message CommonResponse{
+  string message = 1;
+  int32  code = 2;
+  string data = 3;
+}

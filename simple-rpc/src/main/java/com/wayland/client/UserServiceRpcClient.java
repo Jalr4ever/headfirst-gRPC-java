@@ -5,7 +5,6 @@ import cn.hutool.log.Log;
 import cn.hutool.setting.dialect.PropsUtil;
 import com.wayland._grpc.simple_rpc.SimpleRpcService;
 import com.wayland._grpc.simple_rpc.UserServiceGrpc;
-import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 
