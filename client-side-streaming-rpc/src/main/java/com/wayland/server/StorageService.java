@@ -68,7 +68,7 @@ public class StorageService extends StorageServiceGrpc.StorageServiceImplBase {
                 current++;
                 responseObserver.onNext(ClientSideStreamingRpcService.CommonResponse.newBuilder()
                         .setCode(0)
-                        .setMessage("Upload success, see data in target/test-classes/file/output.csv")
+                        .setMessage("Upload success, see data in target/test-classes/file/" + fileName)
                         .build());
                 responseObserver.onCompleted();
             }

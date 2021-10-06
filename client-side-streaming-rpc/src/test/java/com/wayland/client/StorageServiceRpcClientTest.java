@@ -1,9 +1,9 @@
 package com.wayland.client;
 
 import cn.hutool.core.io.FastByteArrayOutputStream;
-import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.IoUtil;
-import cn.hutool.core.text.csv.*;
+import cn.hutool.core.text.csv.CsvUtil;
+import cn.hutool.core.text.csv.CsvWriter;
 import cn.hutool.core.thread.ThreadUtil;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.CharsetUtil;
@@ -55,7 +55,7 @@ class StorageServiceRpcClientTest {
     void upload() throws IOException {
         String fileName = "CSV_" + RandomUtil.randomString(4) + ".csv";
         String encoding = CharsetUtil.UTF_8;
-        ClientSideStreamingRpcService.CommonResponse response = client.upload(fileName, mockCsvFileData(16, 35000), encoding);
+        ClientSideStreamingRpcService.CommonResponse response = client.upload(fileName, mockCsvFileData(16, 350000), encoding);
         Assertions.assertEquals(0, response.getCode());
     }
 
