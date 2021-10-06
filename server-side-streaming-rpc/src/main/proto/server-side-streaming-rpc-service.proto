@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_package = "com.wayland._grpc.server_side_streaming_rpc";
+
+service StorageService {
+  rpc download(EmptyRequest) returns (stream DownloadResponse) {};
+}
+
+message DownloadResponse {
+
+  oneof data{
+    bytes chunk = 1;
+    Metadata metadata = 2;
+    Error error = 3;
+  };
+
+  message Metadata {
+    int64 content_length = 3;
+    ContentType content_type = 4;
+    string content_encoding = 5;
+    string name = 6;
+  }
+
+  message Error {
+    string hint = 1;
+    int32  code = 2;
+  }
+
+  enum ContentType {
+    OCTET_STREAMING = 0;
+    ZIP = 1;
+    IMG_PNG = 2;
+    IMG_JPEG = 3;
+  }
+
+}
+
+message EmptyRequest{
+
+}

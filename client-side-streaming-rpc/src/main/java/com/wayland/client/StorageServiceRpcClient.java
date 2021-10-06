@@ -32,8 +32,8 @@ public class StorageServiceRpcClient implements AutoCloseable {
     private final Log log = Log.get();
 
     public static StorageServiceRpcClient defaultClient() {
-        Integer port = PropsUtil.get("application.properties").getInt("storage-upload-service.port");
-        String host = PropsUtil.get("application.properties").getStr("storage-upload-service.host");
+        Integer port = PropsUtil.get("application.properties").getInt("client-storage-upload-service.port");
+        String host = PropsUtil.get("application.properties").getStr("client-storage-upload-service.host");
         StorageServiceRpcClient client = new StorageServiceRpcClient();
         ManagedChannel channel = NettyChannelBuilder.forAddress(host, port)
                 .usePlaintext() // problem occur without this option but not when ssl(https)
