@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_package = "com.wayland._grpc.bidi_streaming_rpc";
+
+service DesensitizeService{
+  rpc desensitize(stream DesensitizeRequest) returns (stream DesensitizeResponse) {};
+}
+
+message DesensitizeRequest{
+  string data = 1;
+  Type desensitizeType = 2;
+
+  enum Type {
+    COVER = 0;
+  }
+}
+
+message DesensitizeResponse{
+  string data = 1;
+}
